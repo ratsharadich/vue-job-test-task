@@ -1,0 +1,17 @@
+@mixin flexContainer($direction, $gap) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+  }
+
+.excursion-list {
+  @include flexContainer(column, 1rem);
+}
+
+.excursion-tile {
+  @include flexContainer(column, 1rem);
+}
+
+.excursion-tile__info {
+  @include flexContainer(row, 1rem);
+}
