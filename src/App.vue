@@ -1,23 +1,23 @@
 <template>
   <v-app>
     <v-main>
-      <HelloWorld/>
+      <ExursionsPage />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ExursionsPage from './pages/ExursionsPage.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    ExursionsPage,
   },
 
   data: () => ({
     //
   }),
-}
+};
 </script>
