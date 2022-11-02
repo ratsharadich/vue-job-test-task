@@ -1,17 +1,21 @@
-@mixin flexContainer($direction, $gap) {
-    display: flex;
-    flex-direction: $direction;
-    gap: $gap;
-  }
+$halfRemGap: 0.5rem;
 
-.excursion-list {
-  @include flexContainer(column, 1rem);
+.tile {
+  gap: $halfRemGap;
+  border-bottom: 1px solid #bbb;
+  width: 100vw;
 }
 
-.excursion-tile {
-  @include flexContainer(column, 1rem);
+.tile__name {
+  cursor: pointer;
 }
 
-.excursion-tile__info {
-  @include flexContainer(row, 1rem);
+.tag-list {
+  max-width: 100%;
+  height: 24px;
+  gap: 1rem;
+}
+
+.indicator__text {
+  white-space: pre;
 }

@@ -1,21 +1,17 @@
 <template>
-  <section class="excursion-list">
-    <ExcursionTile
+  <section class="excursion-list d-flex flex-column">
+    <Tile
       v-for="excursion of listMock"
       :key="excursion.id"
       :name="excursion.name"
-      :rating="excursion.rating"
-      :type="excursion.type"
-      :transport="excursion.transport"
-      :date="excursion.date"
-      :duration="excursion.duration"
+      :info="Object.values(excludeNameAndId(excursion)).filter(Boolean)"
     />
   </section>
 </template>
 
 <script>
 import './styles.css';
-import ExcursionTile from './components/ExurcionTile.vue';
+import Tile from './components/Tile.vue';
 
 export default {
   name: 'ExurcionsList',
@@ -25,44 +21,115 @@ export default {
         {
           id: 1,
           name: '«Город сыра и мира»',
-          rating: 5,
-          type: 'Историческая',
-          transport: 'На автобусе',
-          date: '28 марта',
-          duration: '9 часов',
+          rating: {
+            value: 5,
+            iconName: 'mdi-star-outline',
+          },
+          type: {
+            value: 'Историческая',
+          },
+          transport: {
+            value: 'На автобусе',
+            iconName: 'mdi-bus',
+          },
+          date: {
+            value: '28 марта',
+          },
+          duration: {
+            value: '9 часов',
+            iconName: 'mdi-clock-time-three-outline',
+          },
+          limit: {
+            value: 'до 20',
+            iconName: 'mdi-account',
+          },
         },
         {
           id: 2,
           name: 'Экскурсия в национальный парк "Куршская коса"',
-          rating: 5,
-          type: 'Обзорная',
-          transport: 'На автобусе',
-          date: '25 марта',
-          duration: '6 часов',
+          rating: {
+            value: 5,
+            iconName: 'mdi-star-outline',
+          },
+          type: {
+            value: 'Обзорная',
+          },
+          transport: {
+            value: 'На автобусе',
+            iconName: 'mdi-bus',
+          },
+          date: {
+            value: '25 марта',
+          },
+          duration: {
+            value: '6 часов',
+            iconName: 'mdi-clock-time-three-outline',
+          },
+          limit: {
+            value: 'до 25',
+            iconName: 'mdi-account',
+          },
         },
         {
           id: 3,
           name: '«О кирках, рыцарях и замках»',
-          rating: 5,
-          type: 'Историческая',
-          transport: 'На автобусе',
-          date: '29 марта',
-          duration: '6 часов',
+          rating: {
+            value: 5,
+            iconName: 'mdi-star-outline',
+          },
+          type: {
+            value: 'Историческая',
+          },
+          transport: {
+            value: 'На автобусе',
+            iconName: 'mdi-bus',
+          },
+          date: {
+            value: '29 марта',
+          },
+          duration: {
+            value: '6 часов',
+            iconName: 'mdi-clock-time-three-outline',
+          },
+          limit: {
+            value: 'до 40',
+            iconName: 'mdi-account',
+          },
         },
         {
           id: 4,
           name: 'Экскурсия в Янтарный',
           rating: null,
-          type: 'Историческая',
-          transport: 'На автобусе',
-          date: '29 марта',
-          duration: '6 часов',
+          type: {
+            value: 'Историческая',
+          },
+          transport: {
+            value: 'На автобусе',
+            iconName: 'mdi-bus',
+          },
+          date: {
+            value: '29 марта',
+          },
+          duration: {
+            value: '6 часов',
+            iconName: 'mdi-clock-time-three-outline',
+          },
+          limit: {
+            value: 'до 10',
+            iconName: 'mdi-account',
+          },
         },
       ],
     };
   },
+  methods: {
+    excludeNameAndId(excursion) {
+      const {name, id, ...rest} = excursion;
+      return rest;
+    },
+  },
   components: {
-    ExcursionTile,
+    Tile,
   },
 };
 </script>
