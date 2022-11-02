@@ -1,18 +1,17 @@
+<!-- Конкретный тэг экскурсии -->
 <template>
-  <div class="tag-list__indicator d-flex flex-row">
+  <div class="tag d-flex flex-row">
     <v-icon v-if="!isFirstIndex" class="tag-list__indicator-divider"
       >mdi-circle-small</v-icon
     >
 
-    <v-icon
-      v-if="iconName"
-      class="tag-list__indicator-icon text-grey-darken-1"
-      >{{ iconName }}</v-icon
-    >
+    <div class="tag__elements d-flex flex-row">
+      <v-icon v-if="iconName" class="tag__icon text-grey-darken-1">{{
+        iconName
+      }}</v-icon>
 
-    <span v-if="text" class="tag-list__indicator__text text-grey-darken-1">{{
-      text
-    }}</span>
+      <span v-if="text" class="tag__text text-grey-darken-1">{{ text }}</span>
+    </div>
   </div>
 </template>
 
@@ -26,3 +25,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.tag__elements {
+  gap: 0.25rem;
+}
+</style>

@@ -1,6 +1,8 @@
+<!-- Список экскурсий -->
 <template>
   <section class="excursion-list d-flex flex-column">
     <Tile
+      class="excursion-list__tile"
       v-for="excursion of listMock"
       :key="excursion.id"
       :name="excursion.name"
@@ -10,7 +12,6 @@
 </template>
 
 <script>
-import './styles.css';
 import Tile from './components/Tile.vue';
 
 export default {
