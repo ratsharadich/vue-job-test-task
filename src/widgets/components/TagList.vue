@@ -1,6 +1,6 @@
 <!-- Список тэгов экскурсии -->
 <template>
-  <div class="tag-list d-flex flex-row flex-wrap overflow-y-hidden">
+  <div class="tag-list d-flex flex-row overflow-x-hidden">
     <Tag
       class="tag-list__tag"
       v-for="(item, index) of info"
@@ -20,6 +20,29 @@ export default {
   props: {
     info: Array,
   },
+  mounted() {
+    window.addEventListener('resize', this.windowResizeEventHandler);
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.windowResizeEventHandler);
+  },
+  methods: {
+    windowResizeEventHandler() {
+      const container = document.querySelector('.tag-list');
+      const items = document.querySelectorAll('.tag-list__tag');
+
+      items.forEach((item) => {
+        const containerOffset = container.offsetLeft + container.offsetWidth;
+        const itemOffset = item.offsetLeft + item.offsetWidth;
+
+        if (containerOffset < itemOffset) {
+          item.style.visibility = 'hidden';
+        } else {
+          item.style.visibility = 'visible';
+        }
+      });
+    },
+  },
   components: {
     Tag,
   },
@@ -29,6 +52,5 @@ export default {
 <style lang="scss" scoped>
 .tag-list {
   max-width: 100%;
-  height: 24px;
 }
 </style>
